@@ -8,15 +8,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  id-token: write
+  contents: read # Allows Github Actions to check repo
+  id-token: write # Allows Github actions to get OIDC token
 
 env:
   AWS_REGION: eu-west-2
+  ECR_REPOSITORY: memos
 
 jobs:
-  test-aws-auth:
-    name: Test AWS OIDC
+  build-and-push:
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
 
     steps:
@@ -29,5 +30,26 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Check AWS identity
-        run: aws sts get-caller-identity
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2 # Authenticates Docker with ECR registry
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            --platform linux/amd64 \ 
+            -t "${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${GITHUB_SHA}" \
+            ./app
+        # Creates the full image name
+
+      - name: Push Docker image
+        run: |
+          docker push \
+            "${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${GITHUB_SHA}"
+
+      - name: Verify image in ECR
+        run: |
+          aws ecr describe-images \
+            --repository-name "${{ env.ECR_REPOSITORY }}" \
+            --image-ids imageTag="${GITHUB_SHA}" \
+            --region "${AWS_REGION}"
