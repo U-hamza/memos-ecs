@@ -1,0 +1,37 @@
+name: Post Deploy Check
+
+on:
+  workflow_run:
+    workflows:
+      - Terraform Deploy
+    types:
+      - completed
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOMAIN: tm.your-domain.com
+
+jobs:
+  health-check:
+    name: Application Health Check
+    runs-on: ubuntu-latest
+
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - name: Check application health
+        run: |
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --retry 10 \
+            --retry-delay 10 \
+            --retry-connrefused \
+            "https://${DOMAIN}/health"
