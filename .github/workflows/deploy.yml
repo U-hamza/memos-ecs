@@ -70,8 +70,9 @@ jobs:
           IMAGE_TAG: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
         run: |
           terraform plan \
-            -out=tfplan \
-            -var="image_tag=${IMAGE_TAG}"
+          -var-file="terraform.ci.tfvars" \
+          -out=tfplan \
+          -var="image_tag=${IMAGE_TAG}"
 
       - name: Terraform Apply
         working-directory: ${{ env.TF_WORKING_DIR }}
