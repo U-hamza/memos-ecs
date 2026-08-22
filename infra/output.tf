@@ -11,7 +11,7 @@ output "private_subnet_ids" {
 }
 
 output "repository_url" {
-  value = module.ecr.repository_url
+  value = data.aws_ecr_repository.ecr.repository_url
 }
 
 output "task_execution_role_arn" {
