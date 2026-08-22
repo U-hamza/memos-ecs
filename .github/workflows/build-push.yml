@@ -39,7 +39,7 @@ jobs:
 
       - name: Terraform Apply - ECR
         working-directory: infra/ecr-bootstrap
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="project_name=${ECR_REPOSITORY}"
 
       - name: Login to Amazon ECR
         id: login-ecr
