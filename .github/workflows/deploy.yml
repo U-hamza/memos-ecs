@@ -8,6 +8,11 @@ on:
       - completed
 
   workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "ECR image SHA to deploy"
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -23,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Only deploys when Build and Push completed successfully.
-    # if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout
@@ -64,10 +69,19 @@ jobs:
         working-directory: ${{ env.TF_WORKING_DIR }}
         run: tflint
 
+      - name: Set Image Tag
+        id: image
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            echo "image_tag=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "image_tag=${{ inputs.image_tag }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Terraform Plan
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
-          IMAGE_TAG: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          IMAGE_TAG: ${{ steps.image.outputs.image_tag }}
         run: |
           terraform plan \
           -var-file="terraform.ci.tfvars" \
