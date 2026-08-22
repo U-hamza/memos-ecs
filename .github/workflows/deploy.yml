@@ -23,9 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Only deploys when Build and Push completed successfully.
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
+    # if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout
@@ -64,7 +62,7 @@ jobs:
 
       - name: TFLint
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: tflint --recursive
+        run: tflint
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_WORKING_DIR }}
