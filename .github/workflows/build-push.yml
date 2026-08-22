@@ -30,6 +30,17 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init - ECR
+        working-directory: infra/ecr-bootstrap
+        run: terraform init
+
+      - name: Terraform Apply - ECR
+        working-directory: infra/ecr-bootstrap
+        run: terraform apply -auto-approve
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2 # Authenticates Docker with ECR registry

@@ -12,10 +12,8 @@ module "vpc" {
 }
 
 
-module "ecr" {
-  source = "./modules/ecr"
-
-  project_name = var.project_name
+data "aws_ecr_repository" "ecr" {
+  name = var.project_name
 }
 
 
@@ -57,7 +55,7 @@ module "ecs" {
   project_name = var.project_name
   aws_region   = var.aws_region
 
-  repository_url          = module.ecr.repository_url
+  repository_url          = data.aws_ecr_repository.ecr.repository_url
   task_execution_role_arn = module.iam.task_execution_role_arn
   task_role_arn           = module.iam.task_role_arn
 
