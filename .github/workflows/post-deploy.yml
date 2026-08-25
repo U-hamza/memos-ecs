@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  DOMAIN: tm.your-domain.com
+  DOMAIN: memos.u-hamza.com
 
 jobs:
   health-check:
