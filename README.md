@@ -52,6 +52,10 @@ Running container:
 
 
 ## Dockerfile optimisation 
+
+My final image is approximately 40 MB. By using a multi-stage build, I removed the Node.js and Go build environments from the production image and used Alpine as the runtime base. Compared with the kind of 1 GB-plus image a single-stage build could produce, this dramatically reduces the image size.
+
+
 | Dockerfile approach                        | Estimated image size | Why                                                                  |
 | ------------------------------------------ | -------------------: | -------------------------------------------------------------------- |
 | Single-stage with Go + Node + dependencies |            ~1–1.5 GB | Go/Node toolchains, `node_modules`, Go modules, source + build tools |
