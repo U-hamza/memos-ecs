@@ -21,7 +21,19 @@ https://github.com/user-attachments/assets/3047e9e4-0488-4b21-aca5-741f2f2e3dbb
 
 
 ## Local Setup
-To do a local setup the project repository needs to be cloned from Github. The project will then need to have a docker image built locally to test if the app is working. Specify any port using docker build, in this case port: 5230 was used.
+To do a local setup the project repository needs to be cloned from Github. The app will then need a docker image built locally to test if it is working. Specify any port using docker build, in this case port: 5230 was used.
+
+Steps:
+git clone git@github.com:YOUR-USERNAME/YOUR-REPO.git
+cd YOUR-REPO
+
+docker build --platform linux/amd64 -t memos:latest .
+
+docker run -d \
+  --name memos \
+  -p 8081:8081 \
+  memos:latest
+
 
 <img width="700" height="400" alt="local setup" src="https://github.com/user-attachments/assets/b2b6b56a-e5b7-46fe-a43c-955685d39a05" />
 
