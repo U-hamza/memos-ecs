@@ -40,7 +40,7 @@ Steps used:
 It can also be tested via the terminal using: curl http://localhost:{port number}/health
 
 
-# Docker Local set up
+## Docker Local set up
 After the Dockerfile/ stage was complete it was tested locally via the container before moving onto the infrastructure. 
 
 Running container:
@@ -49,6 +49,16 @@ Running container:
 </br>
 
 <img width="1432" height="854" alt="memos-local" src="https://github.com/user-attachments/assets/7c0257fe-5719-4c33-9904-112fe5777cd0" />
+
+
+## Dockerfile optimisation 
+| Dockerfile approach                        | Estimated image size | Why                                                                  |
+| ------------------------------------------ | -------------------: | -------------------------------------------------------------------- |
+| Single-stage with Go + Node + dependencies |            ~1–1.5 GB | Go/Node toolchains, `node_modules`, Go modules, source + build tools |
+| Backend-only Go image                      |         ~800 MB–1 GB | Go compiler/toolchain remains in the image                           |
+| Multi-stage + Debian                       |          ~100–150 MB | Build tools removed, but larger runtime base                         |
+| **Multi-stage + Alpine**                   |         **~40 MB** ✅ | Only compiled application + minimal runtime                          |
+
 
 
 
