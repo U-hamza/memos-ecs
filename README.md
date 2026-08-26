@@ -49,7 +49,7 @@ Running container:
 
 </br>
 
-<img width="900" height="700" alt="memos-local" src="https://github.com/user-attachments/assets/7c0257fe-5719-4c33-9904-112fe5777cd0" />
+<img width="900" height="500" alt="memos-local" src="https://github.com/user-attachments/assets/7c0257fe-5719-4c33-9904-112fe5777cd0" />
 
 
 ## Dockerfile optimisation 
