@@ -17,7 +17,9 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 
 ## Live App
 
-https://github.com/user-attachments/assets/23398abf-b8d2-4cd0-870d-8e2c9c2f901b
+https://github.com/user-attachments/assets/3047e9e4-0488-4b21-aca5-741f2f2e3dbb
+
+
 
 
 
