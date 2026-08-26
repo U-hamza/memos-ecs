@@ -45,11 +45,11 @@ It can also be tested via the terminal using: curl http://localhost:{port number
 After the Dockerfile/ stage was complete it was tested locally via the container before moving onto the infrastructure. 
 
 Running container:
-<img width="960" height="579" alt="Screenshot 2026-07-23 at 12 13 21" src="https://github.com/user-attachments/assets/0239cf01-a287-4382-a2a0-46ca7de03f3b" />
+<img width="700" height="379" alt="Screenshot 2026-07-23 at 12 13 21" src="https://github.com/user-attachments/assets/0239cf01-a287-4382-a2a0-46ca7de03f3b" />
 
 </br>
 
-<img width="1432" height="854" alt="memos-local" src="https://github.com/user-attachments/assets/7c0257fe-5719-4c33-9904-112fe5777cd0" />
+<img width="900" height="700" alt="memos-local" src="https://github.com/user-attachments/assets/7c0257fe-5719-4c33-9904-112fe5777cd0" />
 
 
 ## Dockerfile optimisation 
