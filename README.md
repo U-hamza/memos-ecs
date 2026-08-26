@@ -6,11 +6,11 @@ I built a production-style DevOps deployment pipeline for Memos, using Docker, A
 GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and post-deployment health checks using AWS OIDC. A Terraform-destroy pipeline was also included but as a manual trigger and not part of the automation. 
 
 ## Contents
-- https://github.com/U-hamza/memos-ecs/blob/main/README.md#project-structure
+- Project Structure
 - 
 
 
-## Project structure 
+## Project Structure 
 <img width="1264" height="900" alt="Project-structure" src="https://github.com/user-attachments/assets/56f10664-4ca2-42bd-9970-4587bf97a6d6" />
 
 ## Architecture Diagram
