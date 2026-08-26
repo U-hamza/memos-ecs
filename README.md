@@ -9,7 +9,7 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 
 
 ## Project structure 
-<img width="1464" height="1075" alt="Project-structure" src="https://github.com/user-attachments/assets/56f10664-4ca2-42bd-9970-4587bf97a6d6" />
+<img width="1264" height="900" alt="Project-structure" src="https://github.com/user-attachments/assets/56f10664-4ca2-42bd-9970-4587bf97a6d6" />
 
 
 
