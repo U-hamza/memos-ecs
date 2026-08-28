@@ -14,6 +14,8 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 - [Dockerfile Optimisation](#dockerfile-optimisation)
 - [Terraform](#terraform)
 - [CI/CD Pipelines](#ci/cd-pipelines)
+- [Memos App](#memos-app)
+- [Improvements](#improvements)
 
 ## Project Structure 
 <img width="1264" height="900" alt="Project-structure" src="https://github.com/user-attachments/assets/56f10664-4ca2-42bd-9970-4587bf97a6d6" />
@@ -81,5 +83,9 @@ My final image is approximately 40 MB. By using a multi-stage build, I removed t
 ## Terraform
 
 ## CI/CD Pipelines
+
+## Memos App
+
+## Improvements 
 
 
