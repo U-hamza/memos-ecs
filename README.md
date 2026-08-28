@@ -14,7 +14,8 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 
 ## Architecture Diagram
 
-[ecs-drawing.pdf](https://github.com/user-attachments/files/31551875/ecs-drawing.pdf)
+<img width="741" height="1090" alt="ecs drawio" src="https://github.com/user-attachments/assets/4140536a-e2d9-4e05-b5e2-d326608e3089" />
+
 
 
 
