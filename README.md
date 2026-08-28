@@ -50,7 +50,7 @@ It can also be tested via the terminal using: curl http://localhost:{port number
 
 
 ## Docker Local Set Up
-After the Dockerfile/ stage was complete it was tested locally via the container before moving onto the infrastructure. 
+After the Dockerfile/ stage was complete I tested the app locally via the container before moving onto the infrastructure. 
 
 <img width="700" height="379" alt="Screenshot 2026-07-23 at 12 13 21" src="https://github.com/user-attachments/assets/0239cf01-a287-4382-a2a0-46ca7de03f3b" />
 
@@ -61,7 +61,7 @@ After the Dockerfile/ stage was complete it was tested locally via the container
 
 ## Dockerfile optimisation 
 
-My final image is approximately 40 MB. By using a multi-stage build, I removed the Node.js and Go build environments from the production image and used Alpine as the runtime base. Compared with the kind of 1 GB-plus image a single-stage build could produce, this dramatically reduces the image size.
+My final image is approximately 40 MB. By using a multi-stage build, I removed the Node.js and Go build environments from the production image and used Alpine as the runtime base. Compared with the kind of 1 GB-plus image a single-stage build could produce, this drastically reduces the image size.
 
 
 | Dockerfile approach                        | Estimated image size | Why                                                                  |
@@ -73,11 +73,9 @@ My final image is approximately 40 MB. By using a multi-stage build, I removed t
 
 
 
-## Terraform
+## Terraform Overview
 
-### Terraform Overview
-
-
+Below shows the main overview of the whole infrastructure. 
 
 | Component                     | AWS Resource                  | Purpose                                                                        |
 | ----------------------------- | ----------------------------- | ------------------------------------------------------------------------------ |
