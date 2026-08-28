@@ -12,7 +12,7 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 - [Local Setup](#local-setup)
 - [Docker Local Setup](#docker-local-setup)
 - [Dockerfile Optimisation](#dockerfile-optimisation)
-- [Terraform](#terraform)
+- [Terraform Overview](#terraform-overview)
 - [CI/CD Pipelines](#cicd-pipelines)
 - [Memos App](#memos-app)
 
@@ -46,11 +46,6 @@ Steps used:
 - docker run -d --name memos -p 8081:8081 memos:latest
 
 
-<img width="700" height="400" alt="local setup" src="https://github.com/user-attachments/assets/b2b6b56a-e5b7-46fe-a43c-955685d39a05" />
-
-
-</br>
-
 It can also be tested via the terminal using: curl http://localhost:{port number}/health
 
 
@@ -79,6 +74,32 @@ My final image is approximately 40 MB. By using a multi-stage build, I removed t
 
 
 ## Terraform
+
+### Terraform Overview
+
+
+
+| Component                     | AWS Resource                  | Purpose                                                                        |
+| ----------------------------- | ----------------------------- | ------------------------------------------------------------------------------ |
+| **VPC**                       | VPC                           | Provides the isolated network for the application                              |
+| **Public Subnets**            | 2 × Public Subnets            | Hosts internet-facing resources such as the ALB and NAT Gateway                |
+| **Private Subnets**           | 2 × Private Subnets           | Runs the ECS Fargate tasks without direct public internet access               |
+| **Internet Gateway**          | Internet Gateway              | Provides internet connectivity to the public subnets                           |
+| **NAT Gateway**               | 1 × NAT Gateway               | Provides outbound internet access for resources in the private subnets         |
+| **Elastic IP**                | 1 × Elastic IP                | Provides a fixed public IP for the NAT Gateway                                 |
+| **Route Tables**              | Public & Private Route Tables | Controls traffic between subnets, the Internet Gateway and NAT Gateway         |
+| **ECR**                       | ECR Repository                | Stores the Docker image used by ECS                                            |
+| **ECS**                       | ECS Fargate Cluster & Service | Runs the containerised Memos application                                       |
+| **Task Definition**           | Fargate Task Definition       | Defines the container image, CPU, memory, networking and logging configuration |
+| **Application Load Balancer** | ALB                           | Distributes incoming HTTPS traffic to the ECS tasks                            |
+| **Target Group**              | ALB Target Group              | Registers and performs health checks on the ECS tasks                          |
+| **Security Groups**           | ALB & ECS Security Groups     | Controls inbound and outbound network traffic                                  |
+| **IAM**                       | ECS Execution & Task Roles    | Provides ECS with the permissions required to run the application              |
+| **CloudWatch**                | CloudWatch Log Group          | Collects and retains ECS container logs                                        |
+| **ACM**                       | SSL/TLS Certificate           | Provides HTTPS encryption for the application                                  |
+| **Route 53**                  | DNS Record                    | Routes `tm.<your-domain>` to the Application Load Balancer                     |
+| **S3**                        | Terraform State Bucket        | Stores Terraform state remotely and securely                                   |
+
 
 ## CI/CD Pipelines
 
