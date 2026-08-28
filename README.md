@@ -35,7 +35,7 @@ https://github.com/user-attachments/assets/3047e9e4-0488-4b21-aca5-741f2f2e3dbb
 
 
 ## Local Setup
-To do a local setup the project repository needs to be cloned from Github. The app will then need a docker image built locally to test if it is working. Specify the port that was used for the original project using docker build.
+To do a local setup the project repository needs to be cloned from Github. The app will then need a docker image built locally to test if it is working. Specify the port that was used for the original application using docker build.
 
 Steps used:
 - git clone git@github.com:YOUR-USERNAME/YOUR-REPO.git
