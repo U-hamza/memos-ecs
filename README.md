@@ -13,9 +13,8 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 - [Docker Local Setup](#docker-local-setup)
 - [Dockerfile Optimisation](#dockerfile-optimisation)
 - [Terraform](#terraform)
-- [CI/CD Pipelines](#ci/cd-pipelines)
+- [CI/CD Pipelines](#cicd-pipelines)
 - [Memos App](#memos-app)
-- [Improvements](#improvements)
 
 ## Project Structure 
 <img width="1264" height="900" alt="Project-structure" src="https://github.com/user-attachments/assets/56f10664-4ca2-42bd-9970-4587bf97a6d6" />
@@ -84,7 +83,22 @@ My final image is approximately 40 MB. By using a multi-stage build, I removed t
 ## CI/CD Pipelines
 
 ## Memos App
+### Memos
+Memos is a lightweight, open-source note taking and management application. Its main purpose is to allow users to create, organise, and manage personal notes through a web interface. The application has a Go-based backend and web frontend, making it suitable for containerisation and deployment as a single application.
 
-## Improvements 
+### Why this app?
+I chose Memos as the application for this project because it has enough complexity to demonstrate a real-world cloud deployment. It's a full-stack application with a database, allowing me to containerise the app through to automated deployment. 
+
+### Why host it on ECS instead of a VM, Vercel or Netlify?
+I chose Amazon ECS with Fargate because the main purpose of the project was to develop my DevOps and AWS skills around containers and infrastructure automation.
+
+A traditional VM would require me to manage the operating system, Docker run time, and other configurations myself. ECS Fargate allows AWS to manage the infrastructure while I focus on the container, task definition, networking and automation/deployment.
+
+Although Vercel and Netlify maybe easier to use for deployment, but it would not provide me with the opportunity to utilise my skills to build end to end deployment. Therefore, ECS was better suited to demonstrate production-style DevOps practices.
+
+### How many users are there / how many are you expecting?
+This project is mainly for my portfolio and a learning project, so it was not intended for a large scale environment. Therefore, I designed the deployment for approximately 10-50 users. 
+
+
 
 
