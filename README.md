@@ -54,8 +54,6 @@ After the Dockerfile/ stage was complete I tested the app locally via the contai
 
 <img width="700" height="379" alt="Screenshot 2026-07-23 at 12 13 21" src="https://github.com/user-attachments/assets/0239cf01-a287-4382-a2a0-46ca7de03f3b" />
 
-</br>
-
 <img width="900" height="500" alt="memos-local" src="https://github.com/user-attachments/assets/7c0257fe-5719-4c33-9904-112fe5777cd0" />
 
 
@@ -100,6 +98,28 @@ Below shows the main overview of the whole infrastructure.
 
 
 ## CI/CD Pipelines
+Github actions automates the CI/CD pipelines for three of the pipleines which are: build & push, deploy, and post-deploy. The fourth pipeline which is destroy is not automated but is triggered manually through Github workflows. 
+
+### Build & Push
+
+
+### Deploy
+<img width="1409" height="538" alt="deploy" src="https://github.com/user-attachments/assets/473382b3-127e-42bf-87b1-d102be41a32b" />
+
+
+
+### Post Deploy
+
+<img width="1397" height="576" alt="post-deploy" src="https://github.com/user-attachments/assets/68999b13-37d7-4949-9e2f-e64651b956d8" />
+
+
+### Destroy
+
+<img width="1414" height="663" alt="terra destroy" src="https://github.com/user-attachments/assets/9d75231e-16c0-4d15-8d5f-a43070c56fdf" />
+
+
+
+
 
 ## Memos App
 ### Memos
