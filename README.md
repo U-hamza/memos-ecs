@@ -8,6 +8,12 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 ## Contents
 - [Project Structure](#project-structure)
 - [Architecture Diagram](#architecture-diagram)
+- [Live app](#live-app)
+- [Local Setup](#local-setup)
+- [Docker Local Setup](#docker-local-setup)
+- [Dockerfile Optimisation](#dockerfile-optimisation)
+- [Terraform](#terraform)
+- [CI/CD Pipelines](#ci-cd-pipelines)
 
 ## Project Structure 
 <img width="1264" height="900" alt="Project-structure" src="https://github.com/user-attachments/assets/56f10664-4ca2-42bd-9970-4587bf97a6d6" />
@@ -72,5 +78,6 @@ My final image is approximately 40 MB. By using a multi-stage build, I removed t
 
 
 
+## CI/CD Pipelines
 
 
