@@ -53,7 +53,7 @@ Steps used:
 It can also be tested via the terminal using: curl http://localhost:{port number}/health
 
 
-## Docker Local set up
+## Docker Local Set Up
 After the Dockerfile/ stage was complete it was tested locally via the container before moving onto the infrastructure. 
 
 Running container:
@@ -77,6 +77,8 @@ My final image is approximately 40 MB. By using a multi-stage build, I removed t
 | **Multi-stage + Alpine**                   |         **~40 MB** ✅ | Only compiled application + minimal runtime                          |
 
 
+
+## Terraform
 
 ## CI/CD Pipelines
 
