@@ -101,19 +101,26 @@ Below shows the main overview of the whole infrastructure.
 Github actions automates the CI/CD pipelines for three of the pipleines which are: build & push, deploy, and post-deploy. The fourth pipeline which is destroy is not automated but is triggered manually through Github workflows. 
 
 ### Build & Push
+This pipeline builds the Docker Image and Pushes the image to ECR.
+
+<img width="1160" height="440" alt="Screenshot 2026-08-28 at 19 26 45" src="https://github.com/user-attachments/assets/9281d5d4-b489-4594-ad7c-1a998661e2ab" />
 
 
 ### Deploy
+This phase of the automation deploys the whole infrastructure needed for the app to run in the cloud.
+
 <img width="1409" height="538" alt="deploy" src="https://github.com/user-attachments/assets/473382b3-127e-42bf-87b1-d102be41a32b" />
 
 
 
 ### Post Deploy
+This runs an application health check after the deployment stage is completed.
 
 <img width="1397" height="576" alt="post-deploy" src="https://github.com/user-attachments/assets/68999b13-37d7-4949-9e2f-e64651b956d8" />
 
 
 ### Destroy
+This pipeline destroys the whole infrastructure by manually destroying through Github. A confirmation word is required before this pipeline starts.
 
 <img width="1414" height="663" alt="terra destroy" src="https://github.com/user-attachments/assets/9d75231e-16c0-4d15-8d5f-a43070c56fdf" />
 
