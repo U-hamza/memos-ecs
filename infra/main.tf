@@ -21,6 +21,8 @@ module "iam" {
   source = "./modules/iam"
 
   project_name = var.project_name
+
+  db_secret_arn = module.rds.db_secret_arn
 }
 
 
@@ -66,8 +68,12 @@ module "ecs" {
 
   image_tag = var.image_tag
 
+  db_secret_arn = module.rds.db_secret_arn
+
+
   depends_on = [
-    module.alb
+    module.alb,
+    module.rds
   ]
 }
 
@@ -83,5 +89,23 @@ module "route53" {
 
   depends_on = [
     module.alb
+  ]
+}
+
+
+module "rds" {
+  source = "./modules/rds"
+
+  project_name = var.project_name
+
+  private_subnet_ids = module.vpc.private_subnet_ids
+
+  rds_security_group_id = module.security_groups.rds_security_group_id
+
+  db_username = var.db_username
+  db_password = var.db_password
+
+  depends_on = [
+    module.security_groups
   ]
 }

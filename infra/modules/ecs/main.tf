@@ -35,6 +35,20 @@ resource "aws_ecs_task_definition" "memos_task" {
 
       essential = true # true = if application crashes, ECS stops task
 
+      environment = [
+        {
+          name  = "MEMOS_DRIVER"
+          value = "postgres"
+        }
+      ]
+
+      secrets = [
+        {
+          name      = "MEMOS_DSN"
+          valueFrom = var.db_secret_arn
+        }
+      ]
+
       portMappings = [
         {
           containerPort = 8081

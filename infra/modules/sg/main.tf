@@ -75,3 +75,33 @@ resource "aws_vpc_security_group_egress_rule" "ecs_outbound" {
   cidr_ipv4 = "0.0.0.0/0"
 }
 
+
+# RDS sg
+resource "aws_security_group" "rds" {
+  name        = "${var.project_name}-rds-sg"
+  description = "Security group for Memos RDS database"
+  vpc_id      = var.vpc_id
+
+  tags = {
+    Name = "${var.project_name}-rds-sg"
+  }
+}
+
+# RDS inbound
+resource "aws_vpc_security_group_ingress_rule" "rds_from_ecs" {
+  security_group_id            = aws_security_group.rds.id
+  referenced_security_group_id = aws_security_group.ecs.id
+
+  from_port   = 5432
+  to_port     = 5432
+  ip_protocol = "tcp"
+}
+
+# RDS outbound
+resource "aws_vpc_security_group_egress_rule" "rds_all" {
+  security_group_id = aws_security_group.rds.id
+
+  cidr_ipv4   = "0.0.0.0/0"
+  ip_protocol = "-1"
+}
+

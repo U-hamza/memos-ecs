@@ -45,4 +45,6 @@ variable "task_memory" {
   default = "512"
 }
 
-
+variable "db_secret_arn" {
+  type = string
+}
