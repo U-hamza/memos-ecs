@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       image_tag:
-        description: "ECR image SHA to deploy"
+        description: "ECR image tag (Git commit SHA)"
         required: true
         type: string
 
@@ -73,10 +73,15 @@ jobs:
         id: image
         run: |
           if [ "${{ github.event_name }}" = "workflow_run" ]; then
-            echo "image_tag=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
+            IMAGE_TAG="${{ github.event.workflow_run.head_sha }}"
           else
-            echo "image_tag=${{ inputs.image_tag }}" >> "$GITHUB_OUTPUT"
+            IMAGE_TAG="${{ inputs.image_tag }}"
           fi
+
+          # Remove sha256: if it was accidentally included
+          IMAGE_TAG="${IMAGE_TAG#sha256:}"
+
+          echo "image_tag=${IMAGE_TAG}" >> "$GITHUB_OUTPUT"
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_WORKING_DIR }}
