@@ -17,7 +17,8 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 - [Memos App](#memos-app)
 
 ## Project Structure 
-<img width="1264" height="900" alt="project-structure2" src="https://github.com/user-attachments/assets/cb4f4d53-d710-43f2-8f6f-f44f8bfc970b" />
+<img width="1536" height="1024" alt="project-structure2" src="https://github.com/user-attachments/assets/0cd8d7df-5394-496c-93dc-e45bfd800a12" />
+
 
 
 ## Architecture Diagram
