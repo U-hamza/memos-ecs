@@ -59,7 +59,7 @@ After the Dockerfile/ stage was complete I tested the app locally via the contai
 
 ## Dockerfile optimisation 
 
-My final image is approximately 40 MB. By using a multi-stage build, I removed the Node.js and Go build environments from the production image and used Alpine as the runtime base. Compared with the kind of 1 GB-plus image a single-stage build could produce, this drastically reduces the image size.
+My final image is approximately 40 MB. By using a multi-stage build, I removed the Node.js and Go build environments from the production image and used Alpine as the runtime base. Compared with the 1 GB-plus image a single-stage build could produce, this drastically reduces the image size.
 
 
 | Dockerfile approach                        | Estimated image size | Why                                                                  |
