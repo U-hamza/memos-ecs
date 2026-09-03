@@ -55,5 +55,5 @@ resource "aws_secretsmanager_secret" "memos_db" {
 resource "aws_secretsmanager_secret_version" "memos_db_secret" {
   secret_id = aws_secretsmanager_secret.memos_db.id
 
-  secret_string = "postgres://${var.db_username}:${var.db_password}@${aws_db_instance.sql_db.address}:${aws_db_instance.sql_db.port}/${aws_db_instance.sql_db.db_name}?sslmode=disable"
+  secret_string = "postgres://${var.db_username}:${var.db_password}@${aws_db_instance.sql_db.address}:${aws_db_instance.sql_db.port}/${aws_db_instance.sql_db.db_name}?sslmode=require"
 }
