@@ -17,7 +17,8 @@ GitHub Actions automates Docker builds, ECR pushes, Terraform deployments and po
 - [Memos App](#memos-app)
 
 ## Project Structure 
-<img width="1264" height="900" alt="Project-structure" src="https://github.com/user-attachments/assets/56f10664-4ca2-42bd-9970-4587bf97a6d6" />
+<img width="1264" height="900" alt="project-structure2" src="https://github.com/user-attachments/assets/cb4f4d53-d710-43f2-8f6f-f44f8bfc970b" />
+
 
 ## Architecture Diagram
 **Key point:** for this project I used a single NAT Gateway to provide outbound internet access for both private subnets. The reason behind this was because it keeps the architecture simple and significantly reduces AWS costs. Even though in a production environment one NAT Gateway per availability zone is used for higher availability, in this case I chose one after deciding that the intended application was for a small scale environment. 
